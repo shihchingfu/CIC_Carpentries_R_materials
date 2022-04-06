@@ -470,7 +470,7 @@ We first use `filter()`, `group_by()` and `summarise()` to filter our observatio
 
 This yields `surveys_gw` where the observations for each plot are spread across multiple rows, 196 observations of 3 variables. 
 
-Using `spread()` to key on `genus` with values from `mean_weight` this becomes 24 observations of 11 variables, one row for each plot.
+Using `pivot_wider()` to key on `genus` with values from `mean_weight` this becomes 24 observations of 11 variables, one row for each plot.
 
 ```{r}
 # pivot_wider
@@ -487,7 +487,7 @@ We could now plot comparisons between the weight of genera in different plots, a
 
 #### Longer
 
-The converse situation could occur if we had been provided with data in then form of `surveys_spread`, where the genus names are column names, but we wish to treat them as values of a genus variable instead.
+The converse situation could occur if we had been provided with data in then form of `surveys_wide`, where the genus names are column names, but we wish to treat them as values of a genus variable instead.
 
 In this situation we are gathering the column names and turning them into a pair of new variables. One variable represents the column names as values in a new column, and the other variable contains the values previously found across all the original columns.
 
@@ -498,7 +498,7 @@ In this situation we are gathering the column names and turning them into a pair
 3. *names_to*: the name of the new column for storing what were previously column names.
 4. *values_to*: the name of another new column for storing the values that were in previously found in the *cols*.
 
-To recreate `surveys_gw` from `surveys_spread` we would create a new column called `genus` and another called `mean_weight` and use all columns except `plot_id` for the key variable. Here we exclude `plot_id` from being `pivoted_longer()`.
+To recreate `surveys_gw` from `surveys_wide` we would create a new column called `genus` and another called `mean_weight` and use all columns except `plot_id` for the key variable. Here we exclude `plot_id` from being `pivoted_longer()`.
 
 ```{r}
 # pivot_longer
